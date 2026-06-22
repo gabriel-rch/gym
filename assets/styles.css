@@ -432,6 +432,25 @@ body {
 .cue-avoid p { color: var(--bone-dim); }
 .cue-avoid { background: var(--ember-soft); margin: 0 -0.5rem; padding: 0.4rem 0.5rem; border-radius: 2px; }
 
+/* ---- muscle map (Feel it in) -------------------------------------------- */
+.cue-feel-row { display: flex; gap: 0.9rem; align-items: center; }
+.cue-feel-row > p { flex: 1 1 auto; min-width: 0; }
+.ex-figure { margin: 0; flex: 0 0 auto; display: grid; gap: 0.3rem; justify-items: center; }
+.bodymap { display: block; width: auto; height: 118px; }
+.bm-outline { fill: none; stroke: var(--bone-faint); stroke-width: 1; opacity: 0.45; }
+.bm-region { fill: var(--line-soft); }
+.bm-region[data-active="primary"] { fill: var(--lime); }
+.bm-region[data-active="assist"]  { fill: var(--lime-deep); opacity: 0.6; }
+.bm-legend {
+  display: flex; gap: 0.5rem; font-family: var(--mono);
+  font-size: 0.54rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--bone-faint); justify-content: center;
+}
+.bm-key { display: inline-flex; align-items: center; gap: 0.25rem; }
+.bm-sw { width: 0.6rem; height: 0.6rem; border-radius: 1px; display: inline-block; }
+.bm-sw.primary { background: var(--lime); }
+.bm-sw.assist { background: var(--lime-deep); opacity: 0.6; }
+
 .ex-dose {
   align-self: start;
   text-align: right;
@@ -499,6 +518,9 @@ body {
     margin-top: 0.9rem;
   }
   .cue { grid-template-columns: 1fr; gap: 0.15rem; }
+  .cue-feel-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+  .ex-figure { justify-self: center; }
+  .bodymap { height: 96px; }
   .week-label { font-size: 0.56rem; }
   .week-cell { padding: 0.5rem 0.3rem; }
 }

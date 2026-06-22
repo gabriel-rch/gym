@@ -114,12 +114,21 @@ function exerciseCard(item, index) {
       <h3 class="ex-name">No matching exercise</h3></div></article>`;
   }
 
+  const map = muscleMapSVG(ex);
+  const feelBody = map
+    ? `<div class="cue-feel-row"><p>${ex.feel}</p>` +
+      `<figure class="ex-figure">${map}<figcaption class="bm-legend">` +
+      `<span class="bm-key"><i class="bm-sw primary"></i>primary</span>` +
+      `<span class="bm-key"><i class="bm-sw assist"></i>assist</span>` +
+      `</figcaption></figure></div>`
+    : `<p>${ex.feel}</p>`;
+
   let cues;
   if (ex.desc) {
     cues = `<div class="cue cue-note"><span class="cue-label">Note</span><p>${ex.desc}</p></div>`;
   } else {
     cues = `
-      <div class="cue cue-feel"><span class="cue-label">Feel it in</span><p>${ex.feel}</p></div>
+      <div class="cue cue-feel${map ? " has-map" : ""}"><span class="cue-label">Feel it in</span>${feelBody}</div>
       <div class="cue cue-form"><span class="cue-label">Form</span><p>${ex.form}</p></div>
       <div class="cue cue-avoid"><span class="cue-label">Avoid</span><p>${ex.avoid}</p></div>`;
   }
