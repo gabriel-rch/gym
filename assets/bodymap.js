@@ -53,11 +53,11 @@ const FRONT_REGIONS = [
   reg("abs",          '<rect x="56" y="80" width="18" height="42" rx="3"/>'),
   reg("obliques",     '<rect x="50" y="82" width="6" height="30" rx="1"/>'),
   reg("obliques",     '<rect x="74" y="82" width="6" height="30" rx="1"/>'),
-  reg("quads",        '<ellipse cx="53" cy="205" rx="11" ry="40"/>'),
-  reg("quads",        '<ellipse cx="77" cy="205" rx="11" ry="40"/>'),
-  reg("adductors",    '<polygon points="60,160 70,160 68,200 62,200"/>'),
-  reg("calves",       '<ellipse cx="50" cy="270" rx="6" ry="22"/>'),
-  reg("calves",       '<ellipse cx="80" cy="270" rx="6" ry="22"/>'),
+  reg("quads",        '<ellipse cx="55" cy="195" rx="7" ry="40"/>'),
+  reg("quads",        '<ellipse cx="77" cy="195" rx="7" ry="40"/>'),
+  reg("adductors",    '<polygon points="60,158 72,158 69,200 63,200"/>'),
+  reg("calves",       '<ellipse cx="53" cy="270" rx="6" ry="22"/>'),
+  reg("calves",       '<ellipse cx="79" cy="270" rx="6" ry="22"/>'),
 ].join("");
 
 /* --- back (posterior) regions, figure centered ~ x=195 ------------------- */
@@ -83,12 +83,12 @@ const BACK_REGIONS = [
   reg("forearms",     '<ellipse cx="165" cy="114" rx="5" ry="16"/>'),
   reg("forearms",     '<ellipse cx="227" cy="114" rx="5" ry="16"/>'),
   reg("lower-back",   '<rect x="184" y="120" width="22" height="22" rx="2"/>'),
-  reg("glutes",       '<ellipse cx="186" cy="150" rx="10" ry="12"/>'),
-  reg("glutes",       '<ellipse cx="212" cy="150" rx="10" ry="12"/>'),
-  reg("hamstrings",   '<ellipse cx="186" cy="205" rx="11" ry="40"/>'),
-  reg("hamstrings",   '<ellipse cx="214" cy="205" rx="11" ry="40"/>'),
-  reg("calves",       '<ellipse cx="183" cy="270" rx="6" ry="22"/>'),
-  reg("calves",       '<ellipse cx="211" cy="270" rx="6" ry="22"/>'),
+  reg("glutes",       '<ellipse cx="186" cy="150" rx="9" ry="12"/>'),
+  reg("glutes",       '<ellipse cx="204" cy="150" rx="9" ry="12"/>'),
+  reg("hamstrings",   '<ellipse cx="186" cy="195" rx="7" ry="40"/>'),
+  reg("hamstrings",   '<ellipse cx="204" cy="195" rx="7" ry="40"/>'),
+  reg("calves",       '<ellipse cx="185" cy="270" rx="6" ry="22"/>'),
+  reg("calves",       '<ellipse cx="205" cy="270" rx="6" ry="22"/>'),
 ].join("");
 
 /* The full SVG template. The two figures sit side by side in a 260x300 viewBox.
