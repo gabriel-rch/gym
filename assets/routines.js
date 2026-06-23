@@ -114,7 +114,7 @@ const TEMPLATES = {
     slots: [
       slot("Puxada vertical", [4, "8–12"], { pattern: ["vertical-pull"] }),
       slot("Puxar horizontal", [3, "8–12"], { pattern: ["horizontal-pull"] }),
-      slot("Puxada vertical — assistida / negativa", [3, "as able"], { pattern: ["vertical-pull"] }, { prefer: ["assisted", "negative"] }),
+      slot("Puxada vertical — assistida / negativa", [3, "quanto conseguir"], { pattern: ["vertical-pull"] }, { prefer: ["assisted", "negative"] }),
       slot("Deltoide posterior", [3, "12–15"], { muscle: ["rear-delts"] }, { primary: true }),
       slot("Bíceps", [2, "12–15"], { muscle: ["biceps"] }, { primary: true }),
       slot("Bíceps", [2, "12–15"], { muscle: ["biceps"] }, { primary: true }),
