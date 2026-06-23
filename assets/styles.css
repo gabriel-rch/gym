@@ -393,8 +393,10 @@ body {
 .cue-feel-row { display: flex; gap: 0.9rem; align-items: center; }
 .cue-feel-row > p { flex: 1 1 auto; min-width: 0; }
 .ex-figure { margin: 0; flex: 0 0 auto; display: grid; gap: 0.3rem; justify-items: center; }
-.bodymap { display: block; width: auto; height: 92px; }
+.bm-caption { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: lowercase; color: var(--bone-dim); }
+.bodymap { display: block; width: auto; height: 130px; }
 .bm-outline { fill: none; stroke: var(--bone-faint); stroke-width: 1; opacity: 0.45; }
+.bm-hair { fill: var(--bone-faint); opacity: 0.22; }
 .bm-region { fill: var(--line-soft); }
 .bm-region[data-active="primary"] { fill: var(--lime); }
 .bm-region[data-active="assist"]  { fill: var(--lime-deep); opacity: 0.6; }
@@ -468,7 +470,7 @@ body {
   .cue { grid-template-columns: 1fr; gap: 0.15rem; }
   .cue-feel-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
   .ex-figure { justify-self: center; }
-  .bodymap { height: 74px; }
+  .bodymap { height: 104px; }
   .ex-cues { gap: 0.6rem; }
   .week-label { font-size: 0.56rem; }
   .week-cell { padding: 0.5rem 0.3rem; }

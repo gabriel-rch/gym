@@ -97,7 +97,7 @@ function exerciseCard(item, index) {
   const map = muscleMapSVG(ex);
   const feelBody = map
     ? `<div class="cue-feel-row"><p>${ex.feel}</p>` +
-      `<figure class="ex-figure">${map}</figure></div>`
+      `<figure class="ex-figure">${map}<figcaption class="bm-caption">Frente / Costas</figcaption></figure></div>`
     : `<p>${ex.feel}</p>`;
 
   let cues;

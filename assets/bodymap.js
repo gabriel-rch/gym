@@ -62,7 +62,7 @@ const FRONT_REGIONS = [
 
 /* --- back (posterior) regions, figure centered ~ x=195 ------------------- */
 const BACK_OUTLINE = `
-  <circle class="bm-outline" cx="195" cy="22" r="11"/>
+  <circle class="bm-hair" cx="195" cy="22" r="11"/>
   <rect class="bm-outline" x="189" y="32" width="12" height="6"/>
   <path class="bm-outline" d="M176,46 L214,46 L210,150 L180,150 Z"/>
   <path class="bm-outline" d="M176,48 L166,50 L162,124 L168,126 L174,72 Z"/>
@@ -94,10 +94,10 @@ const BACK_REGIONS = [
 /* The full SVG template. The two figures sit side by side in a 260x300 viewBox.
    Decorative inner graphics are wrapped in aria-hidden; the <svg> carries the
    role="img" + accessible label. */
-const BODY_SVG = `<svg class="bodymap" role="img" aria-label="" viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg">
+const BODY_SVG = `<svg class="bodymap" role="img" aria-label="" viewBox="0 0 290 300" xmlns="http://www.w3.org/2000/svg">
   <g aria-hidden="true">
     <g class="bm-view bm-front">${FRONT_OUTLINE}${FRONT_REGIONS}</g>
-    <g class="bm-view bm-back">${BACK_OUTLINE}${BACK_REGIONS}</g>
+    <g class="bm-view bm-back" transform="translate(30,0)">${BACK_OUTLINE}${BACK_REGIONS}</g>
   </g>
 </svg>`;
 
