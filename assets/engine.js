@@ -164,8 +164,8 @@ function weightedPick(list, weights, rng) {
 function formatDose(slot, ex) {
   const { sets, reps } = slot;
   const perSide = ex.load === "unilateral" && reps && /\d/.test(reps) && !reps.includes("min");
-  if (sets != null && reps != null) return `${sets} × ${reps}${perSide ? " /side" : ""}`;
-  if (sets != null) return `${sets} sets`;
+  if (sets != null && reps != null) return `${sets} × ${reps}${perSide ? " /lado" : ""}`;
+  if (sets != null) return `${sets} séries`;
   if (reps != null) return reps;
   return "";
 }

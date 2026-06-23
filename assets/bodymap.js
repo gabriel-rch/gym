@@ -114,7 +114,7 @@ function muscleMapSVG(ex) {
     svg = svg.split(`data-muscle="${m}"`).join(`data-muscle="${m}" data-active="${state}"`);
   });
 
-  const label = "Muscles worked: " +
-    muscles.map((m, i) => i === 0 ? `${bmLabel(m)} (primary)` : bmLabel(m)).join(", ");
+  const label = "Músculos trabalhados: " +
+    muscles.map((m, i) => i === 0 ? `${bmLabel(m)} (primário)` : bmLabel(m)).join(", ");
   return svg.replace('aria-label=""', `aria-label="${label}"`);
 }

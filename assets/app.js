@@ -4,13 +4,13 @@
 
 const STORAGE_KEY = "gym.edition.settings";
 
-const KIND_LABEL = { lift: "Train", cardio: "Condition", recovery: "Recover", rest: "Rest" };
+const KIND_LABEL = { lift: "Treinar", cardio: "Condicionar", recovery: "Recuperar", rest: "Descansar" };
 const SHORT_LABELS = {
-  FB: "Full", UA: "Up A", LA: "Lo A", UB: "Up B", LB: "Lo B",
-  PUSH: "Push", PULL: "Pull", LEGS: "Legs", CARDIO: "Cardio", RECOVERY: "Walk",
+  FB: "Todo", UA: "Sup A", LA: "Inf A", UB: "Sup B", LB: "Inf B",
+  PUSH: "Empurrar", PULL: "Puxar", LEGS: "Pernas", CARDIO: "Cardio", RECOVERY: "Caminhada",
 };
 
-const WEEKDAYS_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const WEEKDAYS_SHORT = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
 
 const state = {
   date: new Date(),
@@ -44,18 +44,12 @@ function el(html) {
   t.innerHTML = html.trim();
   return t.content.firstElementChild;
 }
-function titleCase(s) {
-  return s.replace(/-/g, " ");
-}
-function tagLabel(v) {
-  return TAG_LABELS[v] || titleCase(v);
-}
 
 /* --- controls (populated once) ------------------------------------------- */
 function buildControls() {
   const phaseSel = $("#phaseSelect");
   phaseSel.innerHTML = PHASES.map(
-    (p) => `<option value="${p.id}">Phase ${p.n} · ${p.name}</option>`
+    (p) => `<option value="${p.id}">Fase ${p.n} · ${p.name}</option>`
   ).join("");
   phaseSel.value = state.phaseId;
   phaseSel.addEventListener("change", () => {
@@ -85,23 +79,9 @@ function buildFrequencyOptions() {
   const phase = getPhase(state.phaseId);
   const freqSel = $("#freqSelect");
   freqSel.innerHTML = availableFrequencies(phase)
-    .map((f) => `<option value="${f}">${f} days</option>`)
+    .map((f) => `<option value="${f}">${f} dias</option>`)
     .join("");
   freqSel.value = String(state.frequency);
-}
-
-/* --- tag chips ----------------------------------------------------------- */
-function chipRow(ex) {
-  const chips = [];
-  (ex.muscle || []).forEach((m) => chips.push(`<span class="chip chip-muscle">${tagLabel(m)}</span>`));
-  (ex.pattern || []).forEach((p) => chips.push(`<span class="chip chip-pattern">${tagLabel(p)}</span>`));
-  (ex.equip || []).forEach((e) => chips.push(`<span class="chip chip-equip">${tagLabel(e)}</span>`));
-  return `<div class="ex-tags">${chips.join("")}</div>`;
-}
-function metaRow(ex) {
-  const bits = [`lvl ${ex.level}`, `skill ${ex.skill.join("/")}`, ex.load];
-  (ex.util || []).forEach((u) => bits.push(tagLabel(u)));
-  return `<div class="ex-meta">${bits.map((b) => `<span>${b}</span>`).join("<i>·</i>")}</div>`;
 }
 
 /* --- one exercise card --------------------------------------------------- */
@@ -111,26 +91,23 @@ function exerciseCard(item, index) {
   if (!ex) {
     return `<article class="ex-card empty"><div class="ex-index">${num}</div>
       <div class="ex-body"><div class="ex-slot">${slot.label}</div>
-      <h3 class="ex-name">No matching exercise</h3></div></article>`;
+      <h3 class="ex-name">Nenhum exercício correspondente</h3></div></article>`;
   }
 
   const map = muscleMapSVG(ex);
   const feelBody = map
     ? `<div class="cue-feel-row"><p>${ex.feel}</p>` +
-      `<figure class="ex-figure">${map}<figcaption class="bm-legend">` +
-      `<span class="bm-key"><i class="bm-sw primary"></i>primary</span>` +
-      `<span class="bm-key"><i class="bm-sw assist"></i>assist</span>` +
-      `</figcaption></figure></div>`
+      `<figure class="ex-figure">${map}</figure></div>`
     : `<p>${ex.feel}</p>`;
 
   let cues;
   if (ex.desc) {
-    cues = `<div class="cue cue-note"><span class="cue-label">Note</span><p>${ex.desc}</p></div>`;
+    cues = `<div class="cue cue-note"><span class="cue-label">Nota</span><p>${ex.desc}</p></div>`;
   } else {
     cues = `
-      <div class="cue cue-feel${map ? " has-map" : ""}"><span class="cue-label">Feel it in</span>${feelBody}</div>
-      <div class="cue cue-form"><span class="cue-label">Form</span><p>${ex.form}</p></div>
-      <div class="cue cue-avoid"><span class="cue-label">Avoid</span><p>${ex.avoid}</p></div>`;
+      <div class="cue cue-feel${map ? " has-map" : ""}"><span class="cue-label">Sinta em</span>${feelBody}</div>
+      <div class="cue cue-form"><span class="cue-label">Forma</span><p>${ex.form}</p></div>
+      <div class="cue cue-avoid"><span class="cue-label">Evite</span><p>${ex.avoid}</p></div>`;
   }
 
   return `
@@ -139,8 +116,6 @@ function exerciseCard(item, index) {
       <div class="ex-body">
         <div class="ex-slot">${slot.label}</div>
         <h3 class="ex-name">${ex.name}</h3>
-        ${metaRow(ex)}
-        ${chipRow(ex)}
         <div class="ex-cues">${cues}</div>
       </div>
       <div class="ex-dose"><span class="dose-fig">${dose || "—"}</span></div>
@@ -157,7 +132,7 @@ function renderWeekStrip(workout) {
   const cells = WEEKDAYS_SHORT.map((wd, i) => {
     const cellDate = addDays(monday, i);
     const s = resolveSession(phase, state.frequency, cellDate);
-    const label = s.type === "rest" ? "Rest" : SHORT_LABELS[s.templateId] || s.templateId;
+    const label = s.type === "rest" ? "Descanso" : SHORT_LABELS[s.templateId] || s.templateId;
     const cls = ["week-cell", `kind-${s.type}`, i === todayIdx ? "is-today" : ""].join(" ");
     return `<button class="${cls}" data-offset="${i - todayIdx}">
       <span class="week-dow">${wd}</span>
@@ -167,7 +142,7 @@ function renderWeekStrip(workout) {
   }).join("");
 
   const host = $("#weekstrip");
-  host.innerHTML = `<div class="week-head">The week</div><div class="week-grid">${cells}</div>`;
+  host.innerHTML = `<div class="week-head">A semana</div><div class="week-grid">${cells}</div>`;
   host.querySelectorAll(".week-cell").forEach((btn) => {
     btn.addEventListener("click", () => {
       state.date = addDays(state.date, Number(btn.dataset.offset));
@@ -182,44 +157,38 @@ function renderHero(workout) {
   const session = workout.session;
   const d = state.date;
 
-  const weekday = d.toLocaleDateString("en-US", { weekday: "long" });
-  const dateFull = d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  const weekday = d.toLocaleDateString("pt-BR", { weekday: "long" });
+  const dateFull = d.toLocaleDateString("pt-BR", { month: "long", day: "numeric", year: "numeric" });
   const edition = dayNumber(d) - EPOCH_DN + 1;
-  const seedKey = formatDateKey(d);
 
   const sessionName =
-    session.type === "rest" ? "Rest Day"
-    : session.type === "recovery" ? "Active Recovery"
-    : session.type === "cardio" ? "Cardio + Skill"
+    session.type === "rest" ? "Dia de descanso"
+    : session.type === "recovery" ? "Recuperação ativa"
+    : session.type === "cardio" ? "Cardio + Técnica"
     : session.template.name;
 
   let effort = "";
   if (session.type === "lift") {
-    effort = `<p class="hero-effort"><b>Effort</b> — end every working set with ${phase.rir}. Open with 5–10 min easy cardio and a light feeler set.</p>`;
+    effort = `<p class="hero-effort"><b>Esforço</b> — termine toda série efetiva com ${phase.rir}. Comece com 5–10 min de cardio leve e uma série de teste leve.</p>`;
   } else if (session.template && session.template.note) {
     effort = `<p class="hero-effort">${session.template.note}</p>`;
   } else if (session.type === "rest") {
-    effort = `<p class="hero-effort">No session scheduled today. Light movement beats total rest — a short walk is plenty.</p>`;
+    effort = `<p class="hero-effort">Nenhuma sessão programada para hoje. Movimento leve supera o descanso total — uma curta caminhada basta.</p>`;
   }
-
-  const isToday = seedKey === formatDateKey(new Date());
-  const previewTag = isToday ? "" : `<span class="preview-tag">previewing</span>`;
 
   $("#hero").innerHTML = `
     <div class="hero-meta">
-      <span class="edition-no">Edition Nº ${edition}</span>
-      <span class="seed" title="Today's date seeds the selection — the same day always gives the same workout.">seed&nbsp;·&nbsp;${seedKey}</span>
+      <span class="edition-no" title="A data de hoje define a seleção — o mesmo dia sempre rende o mesmo treino.">Edição Nº ${edition}</span>
     </div>
     <h1 class="hero-date">
       <span class="weekday">${weekday}</span>
       <span class="date-full">${dateFull}</span>
     </h1>
     <div class="hero-session">
-      ${previewTag}
       <span class="kind-chip kind-${session.type}">${KIND_LABEL[session.type]}</span>
       <span class="session-name">${sessionName}</span>
     </div>
-    <p class="hero-blurb"><b>Phase ${phase.n} · ${phase.name}</b> <span class="weeks">${phase.weeks}</span> — ${phase.blurb}</p>
+    <p class="hero-blurb"><b>Fase ${phase.n} · ${phase.name}</b> <span class="weeks">${phase.weeks}</span> — ${phase.blurb}</p>
     ${effort}`;
 }
 
@@ -229,9 +198,9 @@ function renderProgram(workout) {
   if (workout.session.type === "rest") {
     host.innerHTML = `<div class="rest-panel">
       <div class="rest-mark">✕</div>
-      <h2>Rest</h2>
-      <p>Recovery is where the work pays off. Eat, sleep, and let the soreness settle —
-      your next session is on the strip above.</p>
+      <h2>Descanso</h2>
+      <p>A recuperação é onde o esforço dá frutos. Coma, durma e deixe a dor muscular assentar —
+      sua próxima sessão está na barra acima.</p>
     </div>`;
     return;
   }

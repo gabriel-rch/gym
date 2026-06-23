@@ -160,7 +160,7 @@ body {
   text-transform: uppercase;
   color: var(--bone-dim);
 }
-.hero-meta .seed { color: var(--lime-deep); cursor: help; }
+
 
 .hero-date {
   margin: 0.5rem 0 0;
@@ -212,16 +212,6 @@ body {
 .kind-chip.kind-cardio { background: var(--bone); }
 .kind-chip.kind-recovery { background: var(--bone-dim); }
 .kind-chip.kind-rest { background: transparent; color: var(--bone-faint); border: 1px solid var(--line); }
-.preview-tag {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ember);
-  border: 1px solid var(--ember);
-  border-radius: 2px;
-  padding: 0.28rem 0.5rem;
-}
 
 .hero-blurb {
   margin: 1.1rem 0 0;
@@ -310,16 +300,16 @@ body {
 /* ---- program / exercise cards ------------------------------------------- */
 .program {
   display: grid;
-  gap: 0.7rem;
-  margin-top: 1.7rem;
+  gap: 1.1rem;
+  margin-top: 2.1rem;
 }
 
 .ex-card {
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 0 1.3rem;
-  padding: 1.3rem 1.4rem;
+  gap: 0 1.5rem;
+  padding: 1.5rem 1.6rem;
   background: linear-gradient(180deg, var(--panel-2), var(--panel));
   border: 1px solid var(--line-soft);
   border-radius: 3px;
@@ -378,45 +368,12 @@ body {
   letter-spacing: 0.005em;
 }
 
-.ex-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.3rem;
-  font-family: var(--mono);
-  font-size: 0.64rem;
-  letter-spacing: 0.06em;
-  color: var(--bone-faint);
-  text-transform: uppercase;
-}
-.ex-meta i { color: var(--line); font-style: normal; }
-
-.ex-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.32rem;
-  margin: 0.6rem 0 0;
-}
-.chip {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
-  padding: 0.18rem 0.45rem;
-  border-radius: 2px;
-  border: 1px solid var(--line);
-  color: var(--bone-dim);
-  white-space: nowrap;
-}
-.chip-muscle { color: var(--lime); border-color: rgba(204, 248, 63, 0.34); }
-.chip-pattern { color: var(--bone); }
-.chip-equip { color: var(--bone-dim); }
-
 .ex-cues {
-  margin-top: 0.95rem;
+  margin-top: 1.05rem;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.7rem;
 }
-.cue { display: grid; grid-template-columns: 5.4rem 1fr; gap: 0.7rem; align-items: baseline; }
+.cue { display: grid; grid-template-columns: 5.4rem 1fr; gap: 0.85rem; align-items: baseline; }
 .cue-label {
   font-family: var(--mono);
   font-size: 0.6rem;
@@ -436,20 +393,11 @@ body {
 .cue-feel-row { display: flex; gap: 0.9rem; align-items: center; }
 .cue-feel-row > p { flex: 1 1 auto; min-width: 0; }
 .ex-figure { margin: 0; flex: 0 0 auto; display: grid; gap: 0.3rem; justify-items: center; }
-.bodymap { display: block; width: auto; height: 118px; }
+.bodymap { display: block; width: auto; height: 92px; }
 .bm-outline { fill: none; stroke: var(--bone-faint); stroke-width: 1; opacity: 0.45; }
 .bm-region { fill: var(--line-soft); }
 .bm-region[data-active="primary"] { fill: var(--lime); }
 .bm-region[data-active="assist"]  { fill: var(--lime-deep); opacity: 0.6; }
-.bm-legend {
-  display: flex; gap: 0.5rem; font-family: var(--mono);
-  font-size: 0.54rem; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--bone-faint); justify-content: center;
-}
-.bm-key { display: inline-flex; align-items: center; gap: 0.25rem; }
-.bm-sw { width: 0.6rem; height: 0.6rem; border-radius: 1px; display: inline-block; }
-.bm-sw.primary { background: var(--lime); }
-.bm-sw.assist { background: var(--lime-deep); opacity: 0.6; }
 
 .ex-dose {
   align-self: start;
@@ -520,7 +468,8 @@ body {
   .cue { grid-template-columns: 1fr; gap: 0.15rem; }
   .cue-feel-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
   .ex-figure { justify-self: center; }
-  .bodymap { height: 96px; }
+  .bodymap { height: 74px; }
+  .ex-cues { gap: 0.6rem; }
   .week-label { font-size: 0.56rem; }
   .week-cell { padding: 0.5rem 0.3rem; }
 }

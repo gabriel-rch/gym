@@ -21,114 +21,114 @@ function slot(label, [sets, reps], tags, opts = {}) {
 const TEMPLATES = {
   /* Phase 1 — full-body (machine-heavy, learn the patterns) */
   FB: {
-    id: "FB", name: "Full Body", kind: "lift",
+    id: "FB", name: "Corpo Todo", kind: "lift",
     slots: [
-      slot("Squat — knee-dominant", [3, "10–12"], { pattern: ["squat"] }),
-      slot("Horizontal Push — chest", [3, "10–12"], { pattern: ["horizontal-push"], muscle: ["chest"] }),
-      slot("Vertical Pull", [3, "10–12"], { pattern: ["vertical-pull"] }),
+      slot("Agachamento — dominância de joelho", [3, "10–12"], { pattern: ["squat"] }),
+      slot("Empurrar horizontal — peito", [3, "10–12"], { pattern: ["horizontal-push"], muscle: ["chest"] }),
+      slot("Puxada vertical", [3, "10–12"], { pattern: ["vertical-pull"] }),
       slot("Hinge", [2, "12–15"], { pattern: ["hinge"] }),
-      slot("Horizontal Pull", [2, "10–12"], { pattern: ["horizontal-pull"] }),
-      slot("Vertical Push", [2, "10–12"], { pattern: ["vertical-push"] }),
-      slot("Core — anti-extension", [3, null], { pattern: ["core-anti-extension"] }),
+      slot("Puxar horizontal", [2, "10–12"], { pattern: ["horizontal-pull"] }),
+      slot("Empurrar vertical", [2, "10–12"], { pattern: ["vertical-push"] }),
+      slot("Core — anti-extensão", [3, null], { pattern: ["core-anti-extension"] }),
     ],
   },
 
   /* Cardio + Skill day (Phase 1–2) */
   CARDIO: {
-    id: "CARDIO", name: "Cardio + Skill", kind: "cardio",
-    note: "Finish with 10 min of easy mobility.",
+    id: "CARDIO", name: "Cardio + Técnica", kind: "cardio",
+    note: "Termine com 10 min de mobilidade leve.",
     slots: [
-      slot("Conditioning", [null, "25–35 min"], { pattern: ["conditioning"], equip: ["machine"] }),
-      slot("Push-up practice", [3, null], { pattern: ["horizontal-push"], equip: ["bodyweight"] }, { prefer: ["push-up"] }),
-      slot("Vertical Pull — lat work", [3, null], { pattern: ["vertical-pull"] }),
+      slot("Condicionamento", [null, "25–35 min"], { pattern: ["conditioning"], equip: ["machine"] }),
+      slot("Prática de flexão", [3, null], { pattern: ["horizontal-push"], equip: ["bodyweight"] }, { prefer: ["push-up"] }),
+      slot("Puxada vertical — trabalho de dorsal", [3, null], { pattern: ["vertical-pull"] }),
     ],
   },
 
   /* Active-recovery day */
   RECOVERY: {
-    id: "RECOVERY", name: "Active Recovery", kind: "recovery",
-    note: "Genuinely easy — this exists to keep you moving, not to train.",
+    id: "RECOVERY", name: "Recuperação Ativa", kind: "recovery",
+    note: "Genuinamente leve — isto existe para te manter em movimento, não para treinar.",
     slots: [
-      slot("Easy walk", [null, "40–60 min"], { pattern: ["conditioning"], equip: ["bodyweight"] }),
+      slot("Caminhada leve", [null, "40–60 min"], { pattern: ["conditioning"], equip: ["bodyweight"] }),
     ],
   },
 
   /* Phase 2+ — Upper / Lower split */
   UA: {
-    id: "UA", name: "Upper A", kind: "lift",
+    id: "UA", name: "Superior A", kind: "lift",
     slots: [
-      slot("Horizontal Push — chest", [3, "8–12"], { pattern: ["horizontal-push"], muscle: ["chest"] }),
-      slot("Vertical Pull", [3, "8–12"], { pattern: ["vertical-pull"] }),
-      slot("Vertical Push", [3, "10–12"], { pattern: ["vertical-push"] }),
-      slot("Horizontal Pull", [3, "10–12"], { pattern: ["horizontal-pull"] }),
-      slot("Triceps", [2, "12–15"], { muscle: ["triceps"] }, { primary: true }),
-      slot("Biceps", [2, "12–15"], { muscle: ["biceps"] }, { primary: true }),
+      slot("Empurrar horizontal — peito", [3, "8–12"], { pattern: ["horizontal-push"], muscle: ["chest"] }),
+      slot("Puxada vertical", [3, "8–12"], { pattern: ["vertical-pull"] }),
+      slot("Empurrar vertical", [3, "10–12"], { pattern: ["vertical-push"] }),
+      slot("Puxar horizontal", [3, "10–12"], { pattern: ["horizontal-pull"] }),
+      slot("Tríceps", [2, "12–15"], { muscle: ["triceps"] }, { primary: true }),
+      slot("Bíceps", [2, "12–15"], { muscle: ["biceps"] }, { primary: true }),
     ],
   },
   LA: {
-    id: "LA", name: "Lower A", kind: "lift",
+    id: "LA", name: "Inferior A", kind: "lift",
     slots: [
-      slot("Squat — knee-dominant", [3, "10–12"], { pattern: ["squat"] }),
-      slot("Hinge — hamstrings", [3, "10–12"], { pattern: ["hinge"], muscle: ["hamstrings"] }),
-      slot("Quads — isolation", [2, "12–15"], { pattern: ["isolation"], muscle: ["quads"] }),
-      slot("Calves", [3, "12–15"], { muscle: ["calves"] }, { primary: true }),
-      slot("Core — anti-extension", [3, null], { pattern: ["core-anti-extension"] }),
+      slot("Agachamento — dominância de joelho", [3, "10–12"], { pattern: ["squat"] }),
+      slot("Hinge — isquiotibiais", [3, "10–12"], { pattern: ["hinge"], muscle: ["hamstrings"] }),
+      slot("Quadríceps — isolamento", [2, "12–15"], { pattern: ["isolation"], muscle: ["quads"] }),
+      slot("Panturrilhas", [3, "12–15"], { muscle: ["calves"] }, { primary: true }),
+      slot("Core — anti-extensão", [3, null], { pattern: ["core-anti-extension"] }),
     ],
   },
   UB: {
-    id: "UB", name: "Upper B", kind: "lift",
+    id: "UB", name: "Superior B", kind: "lift",
     slots: [
-      slot("Horizontal Push — incline", [3, "8–12"], { pattern: ["horizontal-push"] }, { prefer: ["incline"] }),
-      slot("Vertical Pull", [3, "8–10"], { pattern: ["vertical-pull"] }),
-      slot("Side Delts", [3, "12–15"], { muscle: ["side-delts"] }, { primary: true }),
-      slot("Horizontal Pull", [3, "10–12"], { pattern: ["horizontal-pull"] }),
-      slot("Rear Delts", [2, "12–15"], { muscle: ["rear-delts"] }, { primary: true }),
-      slot("Push-up practice", [2, null], { pattern: ["horizontal-push"], equip: ["bodyweight"] }, { prefer: ["push-up"] }),
+      slot("Empurrar horizontal — inclinado", [3, "8–12"], { pattern: ["horizontal-push"] }, { prefer: ["incline"] }),
+      slot("Puxada vertical", [3, "8–10"], { pattern: ["vertical-pull"] }),
+      slot("Deltoide lateral", [3, "12–15"], { muscle: ["side-delts"] }, { primary: true }),
+      slot("Puxar horizontal", [3, "10–12"], { pattern: ["horizontal-pull"] }),
+      slot("Deltoide posterior", [2, "12–15"], { muscle: ["rear-delts"] }, { primary: true }),
+      slot("Prática de flexão", [2, null], { pattern: ["horizontal-push"], equip: ["bodyweight"] }, { prefer: ["push-up"] }),
     ],
   },
   LB: {
-    id: "LB", name: "Lower B", kind: "lift",
+    id: "LB", name: "Inferior B", kind: "lift",
     slots: [
-      slot("Squat — goblet bias", [3, "8–10"], { pattern: ["squat"] }, { prefer: ["goblet"] }),
-      slot("Hinge — glutes", [3, "10–12"], { pattern: ["hinge"], muscle: ["glutes"] }, { prefer: ["hip-thrust"] }),
-      slot("Hamstrings — isolation", [2, "12–15"], { pattern: ["isolation"], muscle: ["hamstrings"] }),
-      slot("Calves", [3, "12–15"], { muscle: ["calves"] }, { primary: true }),
-      slot("Core — anti-rotation", [3, null], { pattern: ["core-anti-rotation", "core-anti-extension"] }),
+      slot("Agachamento — viés goblet", [3, "8–10"], { pattern: ["squat"] }, { prefer: ["goblet"] }),
+      slot("Hinge — glúteos", [3, "10–12"], { pattern: ["hinge"], muscle: ["glutes"] }, { prefer: ["hip-thrust"] }),
+      slot("Isquiotibiais — isolamento", [2, "12–15"], { pattern: ["isolation"], muscle: ["hamstrings"] }),
+      slot("Panturrilhas", [3, "12–15"], { muscle: ["calves"] }, { primary: true }),
+      slot("Core — anti-rotação", [3, null], { pattern: ["core-anti-rotation", "core-anti-extension"] }),
     ],
   },
 
   /* Phase 3+ — Push / Pull / Legs */
   PUSH: {
-    id: "PUSH", name: "Push", kind: "lift",
+    id: "PUSH", name: "Empurrar", kind: "lift",
     slots: [
-      slot("Horizontal Push — chest", [4, "8–12"], { pattern: ["horizontal-push"], muscle: ["chest"] }),
-      slot("Vertical Push", [3, "8–12"], { pattern: ["vertical-push"] }),
-      slot("Horizontal Push — incline", [3, "10–12"], { pattern: ["horizontal-push"] }, { prefer: ["incline"] }),
-      slot("Side Delts", [3, "12–15"], { muscle: ["side-delts"] }, { primary: true }),
-      slot("Triceps", [2, "12–15"], { muscle: ["triceps"] }, { primary: true }),
-      slot("Triceps", [2, "12–15"], { muscle: ["triceps"] }, { primary: true }),
+      slot("Empurrar horizontal — peito", [4, "8–12"], { pattern: ["horizontal-push"], muscle: ["chest"] }),
+      slot("Empurrar vertical", [3, "8–12"], { pattern: ["vertical-push"] }),
+      slot("Empurrar horizontal — inclinado", [3, "10–12"], { pattern: ["horizontal-push"] }, { prefer: ["incline"] }),
+      slot("Deltoide lateral", [3, "12–15"], { muscle: ["side-delts"] }, { primary: true }),
+      slot("Tríceps", [2, "12–15"], { muscle: ["triceps"] }, { primary: true }),
+      slot("Tríceps", [2, "12–15"], { muscle: ["triceps"] }, { primary: true }),
     ],
   },
   PULL: {
-    id: "PULL", name: "Pull", kind: "lift",
+    id: "PULL", name: "Puxar", kind: "lift",
     slots: [
-      slot("Vertical Pull", [4, "8–12"], { pattern: ["vertical-pull"] }),
-      slot("Horizontal Pull", [3, "8–12"], { pattern: ["horizontal-pull"] }),
-      slot("Vertical Pull — assisted / negative", [3, "as able"], { pattern: ["vertical-pull"] }, { prefer: ["assisted", "negative"] }),
-      slot("Rear Delts", [3, "12–15"], { muscle: ["rear-delts"] }, { primary: true }),
-      slot("Biceps", [2, "12–15"], { muscle: ["biceps"] }, { primary: true }),
-      slot("Biceps", [2, "12–15"], { muscle: ["biceps"] }, { primary: true }),
+      slot("Puxada vertical", [4, "8–12"], { pattern: ["vertical-pull"] }),
+      slot("Puxar horizontal", [3, "8–12"], { pattern: ["horizontal-pull"] }),
+      slot("Puxada vertical — assistida / negativa", [3, "as able"], { pattern: ["vertical-pull"] }, { prefer: ["assisted", "negative"] }),
+      slot("Deltoide posterior", [3, "12–15"], { muscle: ["rear-delts"] }, { primary: true }),
+      slot("Bíceps", [2, "12–15"], { muscle: ["biceps"] }, { primary: true }),
+      slot("Bíceps", [2, "12–15"], { muscle: ["biceps"] }, { primary: true }),
     ],
   },
   LEGS: {
-    id: "LEGS", name: "Legs", kind: "lift",
+    id: "LEGS", name: "Pernas", kind: "lift",
     slots: [
-      slot("Squat — knee-dominant", [4, "8–12"], { pattern: ["squat"] }),
-      slot("Hinge — hamstrings", [3, "10–12"], { pattern: ["hinge"], muscle: ["hamstrings"] }),
-      slot("Hinge — glutes", [3, "10–12"], { pattern: ["hinge"], muscle: ["glutes"] }, { prefer: ["hip-thrust"] }),
-      slot("Quads — isolation", [2, "12–15"], { pattern: ["isolation"], muscle: ["quads"] }),
-      slot("Hamstrings — isolation", [2, "12–15"], { pattern: ["isolation"], muscle: ["hamstrings"] }),
-      slot("Calves", [3, "12–15"], { muscle: ["calves"] }, { primary: true }),
+      slot("Agachamento — dominância de joelho", [4, "8–12"], { pattern: ["squat"] }),
+      slot("Hinge — isquiotibiais", [3, "10–12"], { pattern: ["hinge"], muscle: ["hamstrings"] }),
+      slot("Hinge — glúteos", [3, "10–12"], { pattern: ["hinge"], muscle: ["glutes"] }, { prefer: ["hip-thrust"] }),
+      slot("Quadríceps — isolamento", [2, "12–15"], { pattern: ["isolation"], muscle: ["quads"] }),
+      slot("Isquiotibiais — isolamento", [2, "12–15"], { pattern: ["isolation"], muscle: ["hamstrings"] }),
+      slot("Panturrilhas", [3, "12–15"], { muscle: ["calves"] }, { primary: true }),
       slot("Core", [3, null], { pattern: ["core-anti-extension", "core-anti-rotation", "core-flexion"] }),
     ],
   },
@@ -143,9 +143,9 @@ const REST = null;
 /* --- The phases ---------------------------------------------------------- */
 const PHASES = [
   {
-    id: "foundation", n: 1, name: "Foundation", weeks: "Weeks 1–4",
-    levelCap: "foundation", rir: "2–3 reps in reserve", intermediate: false,
-    blurb: "Learn the patterns, build a base. Machine-heavy, full-body, moderate effort while movements are new.",
+    id: "foundation", n: 1, name: "Fundação", weeks: "Semanas 1–4",
+    levelCap: "foundation", rir: "2–3 repetições de reserva", intermediate: false,
+    blurb: "Aprenda os padrões, construa uma base. Foco em máquinas, corpo todo, esforço moderado enquanto os movimentos são novos.",
     defaultFrequency: 3,
     frequencies: {
       3: ["FB", REST, "FB", REST, "FB", REST, REST],
@@ -154,9 +154,9 @@ const PHASES = [
     },
   },
   {
-    id: "developing", n: 2, name: "Developing", weeks: "Weeks 5–9",
-    levelCap: "developing", rir: "1–2 reps in reserve", intermediate: false,
-    blurb: "More volume; free-weight patterns introduced. The body splits into Upper / Lower so each gets trained harder.",
+    id: "developing", n: 2, name: "Desenvolvimento", weeks: "Semanas 5–9",
+    levelCap: "developing", rir: "1–2 repetições de reserva", intermediate: false,
+    blurb: "Mais volume; padrões com pesos livres são introduzidos. O corpo é dividido em Superior / Inferior para cada um ser treinado com mais intensidade.",
     defaultFrequency: 3,
     frequencies: {
       3: [{ rotate: ["UA", "LA", "UB", "LB"] }, REST, { rotate: ["UA", "LA", "UB", "LB"] }, REST, { rotate: ["UA", "LA", "UB", "LB"] }, REST, REST],
@@ -165,9 +165,9 @@ const PHASES = [
     },
   },
   {
-    id: "intermediate", n: 3, name: "Intermediate", weeks: "Weeks 10–16",
-    levelCap: "intermediate", rir: "1–2 reps in reserve", intermediate: true,
-    blurb: "More total sets, heavier free-weight compounds, harder variations unlocked. First slot biases toward a free-weight option.",
+    id: "intermediate", n: 3, name: "Intermediário", weeks: "Semanas 10–16",
+    levelCap: "intermediate", rir: "1–2 repetições de reserva", intermediate: true,
+    blurb: "Mais séries totais, compostos com pesos livres mais pesados, variações mais difíceis liberadas. O primeiro bloco favorece uma opção com peso livre.",
     defaultFrequency: 3,
     frequencies: {
       3: [{ rotate: ["UA", "LA", "UB", "LB"] }, REST, { rotate: ["UA", "LA", "UB", "LB"] }, REST, { rotate: ["UA", "LA", "UB", "LB"] }, REST, REST],
@@ -176,9 +176,9 @@ const PHASES = [
     },
   },
   {
-    id: "ongoing", n: 4, name: "Intermediate · Ongoing", weeks: "Weeks 17+",
-    levelCap: "intermediate", rir: "1–2 reps in reserve", intermediate: true,
-    blurb: "The structure stops changing; the loads and exercise difficulty keep climbing. A sustainable intermediate template.",
+    id: "ongoing", n: 4, name: "Intermediário · Contínuo", weeks: "Semanas 17+",
+    levelCap: "intermediate", rir: "1–2 repetições de reserva", intermediate: true,
+    blurb: "A estrutura para de mudar; as cargas e a dificuldade dos exercícios continuam subindo. Um modelo intermediário sustentável.",
     defaultFrequency: 4,
     frequencies: {
       3: [{ rotate: ["UA", "LA", "UB", "LB"] }, REST, { rotate: ["UA", "LA", "UB", "LB"] }, REST, { rotate: ["UA", "LA", "UB", "LB"] }, REST, REST],
