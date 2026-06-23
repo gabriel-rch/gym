@@ -107,7 +107,7 @@ function exerciseCard(item, index) {
     cues = `
       <div class="cue cue-feel${map ? " has-map" : ""}"><span class="cue-label">Sinta em</span>${feelBody}</div>
       <div class="cue cue-form"><span class="cue-label">Forma</span><p>${ex.form}</p></div>
-      <div class="cue cue-avoid"><span class="cue-label">Evite</span><p>${ex.avoid}</p></div>`;
+      <div class="cue cue-avoid"><span class="cue-label">Evite</span><ul class="cue-list">${ex.avoid.split(";").map(s => `<li>${s.trim()}</li>`).join("")}</ul></div>`;
   }
 
   return `

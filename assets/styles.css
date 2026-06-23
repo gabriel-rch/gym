@@ -386,8 +386,12 @@ body {
 .cue-feel .cue-label { color: var(--lime-deep); }
 .cue-feel p { color: var(--bone); }
 .cue-avoid .cue-label { color: var(--ember); }
-.cue-avoid p { color: var(--bone-dim); }
+.cue-avoid .cue-list { color: var(--bone-dim); }
 .cue-avoid { background: var(--ember-soft); margin: 0 -0.5rem; padding: 0.4rem 0.5rem; border-radius: 2px; }
+.cue-list { margin: 0; padding-left: 1.1rem; list-style: none; }
+.cue-list li { font-size: 0.9rem; line-height: 1.45; position: relative; padding-left: 0.15rem; }
+.cue-list li + li { margin-top: 0.28rem; }
+.cue-list li::before { content: "·"; position: absolute; left: -0.7rem; color: var(--ember); font-weight: 700; }
 
 /* ---- muscle map (Feel it in) -------------------------------------------- */
 .cue-feel-row { display: flex; gap: 0.9rem; align-items: center; }
