@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Catálogo — todos os exercícios do almanaque</title>
+  <meta name="description" content="Catálogo completo de exercícios: pesquise por nome, músculo ou equipamento e veja a forma, o que sentir e o que evitar em cada movimento." />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Big+Shoulders+Display:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="sheet">
+    <header class="masthead">
+      <span class="brand">A&nbsp;Edição&nbsp;Diária</span>
+      <span class="brand-rule" aria-hidden="true"></span>
+      <nav class="mast-nav">
+        <a href="index.html">A edição de hoje</a>
+        <a href="catalog.html" class="is-current" aria-current="page">O catálogo</a>
+      </nav>
+    </header>
+
+    <section class="cat-head">
+      <h1 class="cat-title">O Catálogo</h1>
+      <p class="cat-sub">Todos os movimentos do almanaque — pesquise e filtre para ver a forma, o que sentir e o que evitar.</p>
+    </section>
+
+    <section class="cat-controls" aria-label="Pesquisa e filtros">
+      <div class="cat-search">
+        <label for="catSearch" class="sr-only">Pesquisar exercícios</label>
+        <input id="catSearch" type="search" placeholder="Pesquisar por nome, músculo ou equipamento…" autocomplete="off" />
+        <span class="cat-count" id="catCount"></span>
+      </div>
+      <div id="catFilters" class="cat-filters"></div>
+    </section>
+
+    <main id="catGrid" class="cat-grid"></main>
+    <div id="catEmpty" class="cat-empty" hidden>
+      <div class="rest-mark">∅</div>
+      <h2>Nada encontrado</h2>
+      <p>Ajuste a pesquisa ou limpe os filtros para ver mais movimentos.</p>
+    </div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/bodymap.js"></script>
+  <script src="assets/catalog.js"></script>
+</body>
+</html>
