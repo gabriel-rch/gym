@@ -504,12 +504,9 @@ body {
 }
 
 .cat-controls {
-  position: sticky;
-  top: 0;
-  z-index: 5;
   margin-top: 1.6rem;
   padding: 1rem 0 1.1rem;
-  background: linear-gradient(180deg, var(--ink) 78%, transparent);
+  background: var(--ink);
   border-bottom: 1px solid var(--line-soft);
 }
 .cat-search { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
